@@ -1,2 +1,13 @@
-# what-the-message-service
- Server for "what the message game"
+# Getting Started
+
+Initialize application with this commands
+
+```
+make -f db/Makefile run
+```
+```
+mvn clean
+```
+```
+mvn compile
+```

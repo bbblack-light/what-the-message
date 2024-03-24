@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: what-the-message-server
+#  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/game
+    username: game_app
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+

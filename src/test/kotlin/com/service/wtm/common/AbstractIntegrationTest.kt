@@ -14,6 +14,5 @@ import org.springframework.test.context.ContextConfiguration
 )
 @ContextConfiguration(initializers = [PostgresContainer::class])
 abstract class AbstractIntegrationTest {
-    @Autowired
-    lateinit var playerService: IPlayerService
+
 }

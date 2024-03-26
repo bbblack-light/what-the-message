@@ -11,5 +11,11 @@ spring:
     username: game_app
     password: postgres
     driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    default-schema: game
+    user: game_user
+    password: postgres
+    changeLog: "classpath:db/changesets/changelog-master.yaml"
 
 

@@ -1,4 +1,4 @@
-IMAGE_TAG_LATEST := trade-tariff:latest
+IMAGE_TAG_LATEST := game:latest
 DB_SOURCES_DIR := db
 
 run:

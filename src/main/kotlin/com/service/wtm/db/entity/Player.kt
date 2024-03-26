@@ -14,6 +14,6 @@ data class Player (
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     val uuid: UUID? = null,
-    @Column(nullable = false, name = "tariff_type")
+    @Column(nullable = false, name = "name")
     val name: String = "",
 )

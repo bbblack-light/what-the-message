@@ -1,10 +1,10 @@
-package com.service.wtm.db.entity
+package com.service.wtm.storage.entity
 
 import java.util.UUID
 
 data class GameSession (
     var id: UUID?,
-    val owner: Player,
+    val owner: PlayerEntity,
 //    val incomingMessages: List<MessageCard>,
 //    val outgoingMessages: List<MessageCard>,
     val players: List<SessionPlayer>,

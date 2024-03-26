@@ -1,4 +1,4 @@
-package com.service.wtm.db.entity.enum
+package com.service.wtm.storage.entity.enum
 
 enum class MessageType {
     OUTGOING,

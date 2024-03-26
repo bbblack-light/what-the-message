@@ -1,4 +1,4 @@
-package com.service.wtm.db.entity//package com.service.wtm.dataModel
+package com.service.wtm.storage.entity//package com.service.wtm.dataModel
 //
 //import com.service.wtm.dataModel.enum.MessageType
 //

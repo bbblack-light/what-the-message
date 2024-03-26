@@ -2,7 +2,7 @@ package com.service.wtm.common
 
 import com.service.wtm.config.PostgresContainer
 import com.service.wtm.config.TestConfiguration
-import com.service.wtm.service.IPlayerService
+import com.service.wtm.core.service.IPlayerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles

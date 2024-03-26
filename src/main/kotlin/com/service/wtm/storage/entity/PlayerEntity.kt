@@ -1,4 +1,4 @@
-package com.service.wtm.db.entity
+package com.service.wtm.storage.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -8,7 +8,7 @@ import java.util.UUID
 import org.hibernate.annotations.GenericGenerator
 
 @Entity(name="player")
-data class Player (
+data class PlayerEntity (
     @Id
     @Column(nullable = false, columnDefinition = "uuid DEFAULT uuid_generate_v4()")
     @GeneratedValue(generator = "UUID")

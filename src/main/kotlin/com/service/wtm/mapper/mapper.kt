@@ -1,10 +1,10 @@
 package com.service.wtm.mapper
 
-import com.service.wtm.db.entity.Player
-import com.service.wtm.model.PlayerModel
+import com.service.wtm.storage.entity.PlayerEntity
+import com.service.wtm.core.domain.PlayerModel
 
-fun Player.toModel() =
+fun PlayerEntity.toModel(): PlayerModel =
     PlayerModel(
-        uuid = uuid.toString(),
-        name = name
+        name = name,
+        uuid = uuid.toString()
     )

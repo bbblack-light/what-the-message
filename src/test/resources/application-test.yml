@@ -1,4 +1,3 @@
 spring:
-  datasource:
-    username: "game_user"
-    password: "postgres"
+  liquibase:
+    enabled: false

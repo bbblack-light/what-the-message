@@ -14,12 +14,13 @@ class PlayerEntityServiceTest : AbstractIntegrationTest() {
 
     @Test
     fun `Save player`() {
-        val testPlayerName = CreatePlayerModel("testPlayer")
+        val name = "testPlayer"
+        val sutInput = CreatePlayerModel(name)
 
-        val saved = sut.createPlayer(testPlayerName)
+        val saved = sut.createPlayer(sutInput)
 
         assertThat(saved).isNotNull
-        assertThat(saved.name).isEqualTo(testPlayerName)
+        assertThat(saved.name).isEqualTo(name)
+        assertThat(saved.uuid).isNotBlank()
     }
-
 }

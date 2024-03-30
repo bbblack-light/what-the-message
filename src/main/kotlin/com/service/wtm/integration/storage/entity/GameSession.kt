@@ -1,4 +1,4 @@
-package com.service.wtm.storage.entity
+package com.service.wtm.integration.storage.entity
 
 import java.util.UUID
 

@@ -1,4 +1,4 @@
-package com.service.wtm.storage.entity//package com.service.wtm.dataModel
+package com.service.wtm.integration.storage.entity//package com.service.wtm.dataModel
 //
 //data class MessageCardAnswer (
 //    val card: MessageCard,

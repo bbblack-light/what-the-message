@@ -1,4 +1,4 @@
-package com.service.wtm.storage.entity
+package com.service.wtm.integration.storage.entity
 
 data class SessionPlayer (
     val player: PlayerEntity,

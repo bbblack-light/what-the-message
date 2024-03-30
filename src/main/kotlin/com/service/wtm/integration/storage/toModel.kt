@@ -1,7 +1,7 @@
-package com.service.wtm.mapper
+package com.service.wtm.integration.storage
 
-import com.service.wtm.storage.entity.PlayerEntity
 import com.service.wtm.core.domain.PlayerModel
+import com.service.wtm.integration.storage.entity.PlayerEntity
 
 fun PlayerEntity.toModel(): PlayerModel =
     PlayerModel(

@@ -7,12 +7,13 @@ import com.service.wtm.core.service.impl.PlayerService
 import com.service.wtm.integration.storage.entity.PlayerEntity
 import com.service.wtm.integration.storage.jpa.PlayerRepository
 import com.service.wtm.integration.storage.jpa.adapter.JpaPlayerAdapter
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mock
+import org.mockito.Mockito.any
+import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
 import java.util.UUID
 
@@ -21,7 +22,7 @@ class PlayerServiceTest : AbstractTest() {
 
     lateinit var sut: IPlayerService
 
-    @MockK
+    @Mock
     lateinit var playerRepository: PlayerRepository
 
     @BeforeEach
@@ -44,7 +45,7 @@ class PlayerServiceTest : AbstractTest() {
             name
         )
 
-        every { playerRepository.save(any()) } returns createdPlayerEntity
+        `when`(playerRepository.save(any())).thenReturn(createdPlayerEntity)
 
         val saved = sut.createPlayer(sutInput)
 

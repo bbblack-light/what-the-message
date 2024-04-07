@@ -8,7 +8,7 @@ spring:
 #    database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     url: jdbc:postgresql://localhost:5432/game
-    username: game_app
+    username: game_user
     password: postgres
     driver-class-name: org.postgresql.Driver
   liquibase:

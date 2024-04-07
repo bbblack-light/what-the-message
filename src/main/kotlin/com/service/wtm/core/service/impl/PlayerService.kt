@@ -1,8 +1,8 @@
 package com.service.wtm.core.service.impl
 
 import com.service.wtm.core.adapter.PlayerAdapter
-import com.service.wtm.core.domain.CreatePlayerModel
-import com.service.wtm.core.domain.PlayerModel
+import com.service.wtm.core.domain.player.CreatePlayerModel
+import com.service.wtm.core.domain.player.PlayerModel
 import com.service.wtm.core.service.IPlayerService
 import org.springframework.stereotype.Service
 

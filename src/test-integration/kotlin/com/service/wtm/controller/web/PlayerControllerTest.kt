@@ -1,13 +1,13 @@
 package com.service.wtm.controller.web
 
-import com.service.wtm.common.AbstractTest
-import com.service.wtm.controller.web.dto.CreatePlayerDto
-import org.assertj.core.api.Assertions
+import com.service.wtm.common.AbstractIntegrationTest
+import com.service.wtm.controller.web.dto.player.CreatePlayerDto
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
 
-class PlayerControllerTest : AbstractTest() {
+class PlayerControllerTest : AbstractIntegrationTest() {
     @Autowired
     lateinit var sut: PlayerController
 
@@ -17,8 +17,8 @@ class PlayerControllerTest : AbstractTest() {
 
         val saved = sut.createPlayer(testPlayer)
 
-        Assertions.assertThat(saved).isNotNull
-        Assertions.assertThat(saved.name).isEqualTo(testPlayer.name)
-        Assertions.assertThat(saved.uuid).isNotBlank()
+        assertThat(saved).isNotNull
+        assertThat(saved.name).isEqualTo(testPlayer.name)
+        assertThat(saved.uuid).isNotBlank()
     }
 }

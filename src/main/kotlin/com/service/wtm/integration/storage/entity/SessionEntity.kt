@@ -14,6 +14,6 @@ data class SessionEntity (
     val uuid: UUID? = null,
 
     @ManyToOne
-    @JoinColumn(name="player_id", nullable=false)
+    @JoinColumn(name="player_uuid", nullable=false)
     val player: PlayerEntity = PlayerEntity()
 )

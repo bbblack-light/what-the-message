@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changesets/001/changeset.yaml
+  - include:
+      file: db/changesets/002/changeset.yaml

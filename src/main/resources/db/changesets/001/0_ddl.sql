@@ -1,4 +1,4 @@
 CREATE TABLE player (
-    uuid uuid,
+    uuid uuid primary key,
     name text
 );

@@ -4,18 +4,3 @@ server:
 spring:
   application:
     name: what-the-message-server
-#  jpa:
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://localhost:5432/game?currentSchema=game
-    username: game_user
-    password: postgres
-    driver-class-name: org.postgresql.Driver
-  liquibase:
-    enabled: true
-    default-schema: game
-    user: game_user
-    password: postgres
-    changeLog: "classpath:db/changesets/changelog-master.yaml"
-
-

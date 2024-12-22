@@ -1,9 +1,9 @@
-package com.service.wtm.integration.storage
+package com.service.wtm.integration.storage.inmemory.mapper
 
 import com.service.wtm.core.domain.player.PlayerModel
 import com.service.wtm.core.domain.session.SessionModel
-import com.service.wtm.integration.storage.entity.PlayerEntity
-import com.service.wtm.integration.storage.entity.SessionEntity
+import com.service.wtm.integration.storage.inmemory.entity.PlayerEntity
+import com.service.wtm.integration.storage.inmemory.entity.SessionEntity
 
 fun PlayerEntity.toModel(): PlayerModel =
     PlayerModel(

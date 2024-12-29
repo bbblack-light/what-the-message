@@ -9,6 +9,7 @@ import storage.inmemory.adapter.InMemorySessionStorageAdapter
 
 class InMemoryStorageAdapterFactory: StorageAdapterFactory {
     private var playerStorageAdapter: PlayerStorageAdapter? = null;
+    private var sessionStorageAdapter: SessionStorageAdapter? = null;
     override fun playerStorageAdapterFactory(): PlayerStorageAdapter {
         if (playerStorageAdapter == null) {
             playerStorageAdapter = InMemoryPlayerStorageAdapter()
@@ -17,8 +18,11 @@ class InMemoryStorageAdapterFactory: StorageAdapterFactory {
     }
 
     override fun sessionStorageAdapterFactory(): SessionStorageAdapter {
-        return InMemorySessionStorageAdapter(
-            playerStorageAdapterFactory()
-        )
+        if (sessionStorageAdapter == null) {
+            sessionStorageAdapter = InMemorySessionStorageAdapter(
+                playerStorageAdapterFactory()
+            )
+        }
+        return sessionStorageAdapter as InMemorySessionStorageAdapter
     }
 }

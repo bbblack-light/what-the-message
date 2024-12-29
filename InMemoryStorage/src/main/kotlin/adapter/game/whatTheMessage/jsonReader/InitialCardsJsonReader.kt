@@ -20,6 +20,6 @@ internal class InitialCardsJsonReader {
     }
 
     companion object {
-        val initialCardsJsonFileName = "initialCards.json"
+        const val initialCardsJsonFileName = "initialCards.json"
     }
 }

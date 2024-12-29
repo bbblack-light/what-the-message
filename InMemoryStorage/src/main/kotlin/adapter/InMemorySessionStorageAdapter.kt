@@ -11,9 +11,10 @@ import storage.inmemory.mapper.toSessionEntity
 import java.util.UUID
 
 internal class InMemorySessionStorageAdapter(
-    private val playerStorageAdapter: PlayerStorageAdapter,
-    private val sessions: MutableCollection<SessionEntity> = mutableListOf()
+    private val playerStorageAdapter: PlayerStorageAdapter
 ) : SessionStorageAdapter {
+    private val sessions: MutableCollection<SessionEntity> = mutableListOf()
+
     override fun createSession(createSessionModel: CreateSessionModel): SessionModel {
         val player = playerStorageAdapter.getPlayer(UUID.fromString(createSessionModel.ownerUuid))
 

@@ -23,9 +23,7 @@ class InMemoryStorageAdapterFactory: StorageAdapterFactory {
 
     override fun sessionStorageAdapter(): SessionStorageAdapter {
         if (sessionStorageAdapter == null) {
-            sessionStorageAdapter = InMemorySessionStorageAdapter(
-                playerStorageAdapter()
-            )
+            sessionStorageAdapter = InMemorySessionStorageAdapter()
         }
         return sessionStorageAdapter as InMemorySessionStorageAdapter
     }

@@ -1,29 +1,41 @@
 package storage.inmemory.mapper
 
-import com.service.wtm.core.domain.model.session.CreateSessionModel
+import core.domain.model.ModelGameType
+import core.domain.storageAdapter.models.AdapterCreateSessionModel
 import core.domain.model.game.whatTheMessage.SmsCardType
-import core.domain.model.player.CreatePlayerModel
+import core.domain.model.player.CreatePlayerRequestModel
 import core.domain.model.player.PlayerModel
+import storage.inmemory.entity.EntityGameType
+import storage.inmemory.entity.ISessionPlayerEntity
 import storage.inmemory.entity.PlayerEntity
 import storage.inmemory.entity.SessionEntity
 import storage.inmemory.entity.game.whatTheMessage.EntitySmsCardType
+import storage.inmemory.entity.game.whatTheMessage.WtmPlayerEntity
 import java.util.UUID
 
-internal fun CreatePlayerModel.toPlayerEntity(): PlayerEntity =
+internal fun CreatePlayerRequestModel.toPlayerEntity(): PlayerEntity =
     PlayerEntity(
         uuid = UUID.randomUUID(),
         name = name
     )
 
-internal fun CreateSessionModel.toSessionEntity(playerEntity: PlayerEntity): SessionEntity =
-    SessionEntity(
+internal fun AdapterCreateSessionModel.toSessionEntity(): SessionEntity {
+    val owner = UUID.fromString(ownerId)
+    val gameType = gameType.toEntity()
+    return SessionEntity(
         uuid = UUID.randomUUID(),
-        player = playerEntity
+        ownerId = owner,
+        playersId = mutableListOf(owner),
+        sessionGame = gameType,
     )
+}
+
+internal fun ModelGameType.toEntity(): EntityGameType =
+    EntityGameType.valueOf(this.name)
 
 internal fun PlayerModel.toPlayerEntity(): PlayerEntity =
     PlayerEntity(
-        uuid = UUID.fromString(uuid),
+        uuid = UUID.fromString(id),
         name = name
     )
 

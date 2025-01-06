@@ -1,6 +1,6 @@
 package storage.inmemory.mapper
 
-import com.service.wtm.core.domain.model.session.SessionModel
+import core.domain.model.session.SessionModel
 import core.domain.model.game.whatTheMessage.SmsCard
 import core.domain.model.game.whatTheMessage.SmsCardType
 import core.domain.model.player.PlayerModel
@@ -12,13 +12,14 @@ import storage.inmemory.entity.game.whatTheMessage.SmsCardEntity
 internal fun PlayerEntity.toModel(): PlayerModel =
     PlayerModel(
         name = name,
-        uuid = uuid.toString()
+        id = uuid.toString()
     )
 
 internal fun SessionEntity.toModel(): SessionModel =
     SessionModel(
-        owner = player.toModel(),
-        uuid = uuid.toString()
+        ownerId = ownerId.toString(),
+        id = uuid.toString(),
+        playersId = playersId.map { it.toString() }
     )
 
 internal fun SmsCardEntity.toModel(): SmsCard =

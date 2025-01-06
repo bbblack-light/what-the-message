@@ -23,7 +23,10 @@ open class DomainServiceFactory(
 
     open fun sessionService(): ISessionService {
         if (sessionService == null) {
-            sessionService = SessionService(storageAdapterFactory.sessionStorageAdapter())
+            sessionService = SessionService(
+                storageAdapterFactory.sessionStorageAdapter(),
+                playerService()
+            )
         }
         return sessionService as ISessionService
     }

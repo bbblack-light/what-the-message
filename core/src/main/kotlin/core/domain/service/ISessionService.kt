@@ -1,8 +1,14 @@
 package core.domain.service
 
-import com.service.wtm.core.domain.model.session.CreateSessionModel
-import com.service.wtm.core.domain.model.session.SessionModel
+import core.domain.model.player.PlayerModel
+import core.domain.model.session.CreateSessionRequestModel
+import core.domain.model.session.SessionModel
+import core.domain.model.session.AddPlayerToSessionRequestModel
+import core.domain.model.session.StartGameRequestModel
 
 interface ISessionService {
-    fun createSession(createSessionModel: CreateSessionModel): SessionModel
+    fun createSession(request: CreateSessionRequestModel): SessionModel
+    fun addPlayerToSession(request: AddPlayerToSessionRequestModel)
+    fun getSessionPlayers(sessionId: String): List<PlayerModel>
+    fun startGame(request: StartGameRequestModel)
 }

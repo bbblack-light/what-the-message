@@ -1,8 +1,7 @@
-package com.service.wtm.core.domain.model.session
-
-import core.domain.model.player.PlayerModel
+package core.domain.model.session
 
 data class SessionModel (
-    val uuid: String,
-    val owner: PlayerModel,
+    val id: String,
+    val ownerId: String,
+    val playersId: List<String>
 )

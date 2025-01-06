@@ -1,5 +1,5 @@
 package core.domain.model.player
 
-data class CreatePlayerModel (
+data class CreatePlayerRequestModel (
     val name: String
 )

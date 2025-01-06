@@ -1,10 +1,12 @@
 package core.domain.service
 
-import core.domain.model.player.CreatePlayerModel
+import core.domain.model.player.CreatePlayerRequestModel
 import core.domain.model.player.PlayerModel
 
 interface IPlayerService {
-    fun createPlayer(createPlayerModel: CreatePlayerModel): PlayerModel
+    fun createPlayer(request: CreatePlayerRequestModel): PlayerModel
 
     fun getPlayers(): List<PlayerModel>
+
+    fun getPlayer(id: String): PlayerModel
 }

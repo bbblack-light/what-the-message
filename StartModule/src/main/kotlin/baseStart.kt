@@ -4,6 +4,7 @@ import core.domain.model.ModelGameType
 import core.domain.model.player.CreatePlayerRequestModel
 import core.domain.model.session.AddPlayerToSessionRequestModel
 import core.domain.model.session.CreateSessionRequestModel
+import core.domain.model.session.StartSessionRequestModel
 import core.factory.DomainServiceFactory
 import storage.inmemory.InMemoryStorageAdapterFactory
 
@@ -33,5 +34,17 @@ fun baseStart() {
         )
     )
 
-    println(domainServiceFactory.sessionService().getSessionPlayers(session.id))
+    domainServiceFactory.sessionService().startGame(StartSessionRequestModel(sessionId = session.id))
+
+    val sessionState = domainServiceFactory.wtmGameSessionManager().getSessionState(session.id)
+
+    println(
+        sessionState.players.get(0).cards.map {it.text + "\n\n" }
+    )
+
+    println()
+
+    println(
+        sessionState.players.get(1).cards.map {it.text + "\n\n" }
+    )
 }

@@ -1,5 +1,5 @@
 package core.domain.model.session
 
-data class StartGameRequestModel (
+data class StartSessionRequestModel (
     val sessionId: String
 )

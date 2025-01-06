@@ -4,8 +4,12 @@ import core.domain.service.IPlayerService
 import core.domain.service.ISessionService
 import core.domain.service.PlayerService
 import core.domain.service.SessionService
+import core.domain.service.game.IGameService
 import core.domain.service.game.whatTheMessage.CardService
 import core.domain.service.game.whatTheMessage.ICardService
+import core.domain.service.game.whatTheMessage.IWtmGameSessionManager
+import core.domain.service.game.whatTheMessage.WtmGameService
+import core.domain.service.game.whatTheMessage.WtmGameSessionManager
 
 open class DomainServiceFactory(
     private val storageAdapterFactory: StorageAdapterFactory
@@ -13,6 +17,8 @@ open class DomainServiceFactory(
     private var playerService: IPlayerService? = null
     private var sessionService: ISessionService? = null
     private var wtmCardService: ICardService? = null
+    private var wtmGameService: IGameService? = null
+    private var wtmGameSessionManager: IWtmGameSessionManager? = null
 
     open fun playerService(): IPlayerService {
         if (playerService == null) {
@@ -25,7 +31,8 @@ open class DomainServiceFactory(
         if (sessionService == null) {
             sessionService = SessionService(
                 storageAdapterFactory.sessionStorageAdapter(),
-                playerService()
+                playerService(),
+                listOf(wtmGameService())
             )
         }
         return sessionService as ISessionService
@@ -36,5 +43,22 @@ open class DomainServiceFactory(
             wtmCardService = CardService(storageAdapterFactory.wtmSmsCardStorageAdapter())
         }
         return wtmCardService as ICardService
+    }
+
+    open fun wtmGameSessionManager(): IWtmGameSessionManager {
+        if (wtmGameSessionManager == null) {
+            wtmGameSessionManager = WtmGameSessionManager()
+        }
+        return wtmGameSessionManager as IWtmGameSessionManager
+    }
+
+    open fun wtmGameService(): IGameService {
+        if (wtmGameService == null) {
+            wtmGameService = WtmGameService(
+                wtmCardService(),
+                wtmGameSessionManager()
+            )
+        }
+        return wtmGameService as IGameService
     }
 }

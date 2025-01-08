@@ -10,9 +10,11 @@ import core.domain.service.game.whatTheMessage.ICardService
 import core.domain.service.game.whatTheMessage.IWtmGameSessionManager
 import core.domain.service.game.whatTheMessage.WtmGameService
 import core.domain.service.game.whatTheMessage.WtmGameSessionManager
+import core.domain.service.game.whatTheMessage.notification.WtmNotifier
 
 open class DomainServiceFactory(
-    private val storageAdapterFactory: StorageAdapterFactory
+    private val storageAdapterFactory: StorageAdapterFactory,
+    private val wtmAdapterFactory: GameAdaptersFactory
 ) {
     private var playerService: IPlayerService? = null
     private var sessionService: ISessionService? = null
@@ -47,7 +49,11 @@ open class DomainServiceFactory(
 
     open fun wtmGameSessionManager(): IWtmGameSessionManager {
         if (wtmGameSessionManager == null) {
-            wtmGameSessionManager = WtmGameSessionManager()
+            wtmGameSessionManager = WtmGameSessionManager(
+                WtmNotifier(
+                    wtmAdapterFactory.WtmNotifyChannel()
+                )
+            )
         }
         return wtmGameSessionManager as IWtmGameSessionManager
     }

@@ -10,7 +10,9 @@ import storage.inmemory.InMemoryStorageAdapterFactory
 
 fun baseStart() {
     val storageFactory = InMemoryStorageAdapterFactory()
-    val domainServiceFactory = DomainServiceFactory(storageFactory)
+    val domainServiceFactory = DomainServiceFactory(
+        storageFactory, GameAdaptersFactoryImpl()
+    )
 
     val createPlayerModel = CreatePlayerRequestModel("Lena")
     val createPlayerModel2 = CreatePlayerRequestModel("Max")
@@ -35,16 +37,4 @@ fun baseStart() {
     )
 
     domainServiceFactory.sessionService().startGame(StartSessionRequestModel(sessionId = session.id))
-
-    val sessionState = domainServiceFactory.wtmGameSessionManager().getSessionState(session.id)
-
-    println(
-        sessionState.players.get(0).cards.map {it.text + "\n\n" }
-    )
-
-    println()
-
-    println(
-        sessionState.players.get(1).cards.map {it.text + "\n\n" }
-    )
 }

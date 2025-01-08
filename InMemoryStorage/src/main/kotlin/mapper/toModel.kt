@@ -27,7 +27,7 @@ internal fun SessionEntity.toModel(): SessionModel =
 
 internal fun SmsCardEntity.toModel(): SmsCard =
     SmsCard(
-        uuid = uuid.toString(),
+        id = uuid.toString(),
         type = type.toModel(),
         text = text
     )

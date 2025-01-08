@@ -2,7 +2,7 @@ package core.domain.service.game.whatTheMessage
 
 import core.domain.model.ModelGameType
 import core.domain.model.game.StartGameRequestModel
-import core.domain.model.game.whatTheMessage.GetStartsCardForGameRequestModel
+import core.domain.model.game.whatTheMessage.SmsCard
 import core.domain.service.game.IGameService
 
 internal class WtmGameService(
@@ -10,16 +10,13 @@ internal class WtmGameService(
     private val wtmGameSessionManager: IWtmGameSessionManager
 ): IGameService {
     override fun startGame(request: StartGameRequestModel) {
-        val cardsInfo = cardService.getStartsCardsForGame(
-            GetStartsCardForGameRequestModel(
-                players = request.players
-            )
-        )
+        val cardsIn: List<SmsCard> = cardService.getAllInCards()
+        val cardsOut: List<SmsCard> = cardService.getAllOutCards()
 
         wtmGameSessionManager.addSession(
-            players = cardsInfo.playersCards,
-            cardsOut = cardsInfo.cardsOut,
-            cardsIn = cardsInfo.cardsIn,
+            players = request.players,
+            cardsOut = cardsOut,
+            cardsIn = cardsIn,
             sessionId = request.sessionId
         )
     }

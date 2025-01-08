@@ -15,7 +15,7 @@ import core.domain.storageAdapter.models.AdapterCreateSessionModel
 internal class SessionService(
     private val gameSessionStorageAdapter: SessionStorageAdapter,
     private val playerService: IPlayerService,
-    private val gameServices: List<IGameService>
+    gameServices: List<IGameService>
 ) : ISessionService {
 
     private val gameServicesMap: Map<ModelGameType, IGameService> =
